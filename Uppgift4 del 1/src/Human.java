@@ -1,6 +1,17 @@
 public class Human {
 	private Dog dog;
 	private String name;
+	private String errorMsg;
+
+	
+	public Human(String _name){
+		if(_name.length() > 3){
+		this.name=_name;
+		}else{
+			this.errorMsg="to short name";
+			System.out.println("to short name");
+		}
+	}
 	
 	public Dog getDog() {
 		return dog;
@@ -18,5 +29,8 @@ public class Human {
 		this.name = name;
 	}
 
+	public String getErrorMsg() {
+			return this.errorMsg;
+	}
 	
 }
