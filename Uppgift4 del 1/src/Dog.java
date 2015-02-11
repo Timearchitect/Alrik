@@ -2,7 +2,6 @@ public class Dog {
 	private String name;
 	
 	public Dog(String _name){
-		
 		 setName( _name);
 		
 	}
