@@ -1,19 +1,23 @@
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import javax.swing.JLabel;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
-public class GUI extends JFrame {
+public class Uppgift_4_del1 extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private JPanel contentPane;
 	private JTextField textHuman;
 	private JTextField textDog;
@@ -28,7 +32,7 @@ public class GUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUI frame = new GUI();
+					Uppgift_4_del1 frame = new Uppgift_4_del1();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +44,7 @@ public class GUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GUI() {
+	public Uppgift_4_del1() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 563,453);
@@ -50,13 +54,14 @@ public class GUI extends JFrame {
 		contentPane.setLayout(null);
 		
 		final JLabel humanPic = new JLabel("");
-		humanPic.setIcon(new ImageIcon(GUI.class.getResource("/graphics/human.png")));
+		humanPic.setIcon(new ImageIcon(Uppgift_4_del1.class.getResource("/graphics/human.png")));
 		humanPic.setBounds(413, 13, 97, 89);
 		humanPic.setEnabled(false);
+		
 		contentPane.add(humanPic);
 		
 		final JLabel dogPic = new JLabel("");
-		dogPic.setIcon(new ImageIcon(GUI.class.getResource("/graphics/dog.png")));
+		dogPic.setIcon(new ImageIcon(Uppgift_4_del1.class.getResource("/graphics/dog.png")));
 		dogPic.setBounds(413, 61, 97, 89);
 		dogPic.setEnabled(false);
 		contentPane.add(dogPic);
@@ -72,9 +77,11 @@ public class GUI extends JFrame {
 		textDog.setBounds(25, 77, 252, 22);
 		contentPane.add(textDog);
 		textDog.setColumns(10);
+		errorArea.setEditable(false);
 
 		errorArea.setBounds(25, 287, 354, 89);
 		contentPane.add(errorArea);
+		infoArea.setEditable(false);
 		
 		
 		infoArea.setBounds(25, 163, 354, 80);
