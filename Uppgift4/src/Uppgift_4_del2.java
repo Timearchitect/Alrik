@@ -5,6 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -58,8 +61,47 @@ public class Uppgift_4_del2 extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(6, 30, 90, 310);
+		scrollPane_1.setBounds(6, 30, 110, 310);
 		contentPane.add(scrollPane_1);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(115, 30, 678, 729);
+		contentPane.add(scrollPane);
+
+		final JTextArea textArea = new JTextArea();
+		textArea.setPreferredSize(new Dimension(4, 50));
+		textArea.setMinimumSize(new Dimension(4, 200));
+		textArea.setFont(new Font("Monospaced", Font.BOLD, 15));
+		scrollPane.setViewportView(textArea);
+		
+		animal.add(new Snake("Slythder","nosdunu", true));
+		animal.add(new Cat("nisse","cat", 9));
+		animal.add(new Dog("Henry", "cancus dicima", true));
+
+		showAnimals(textArea);
+		final JButton btnAdd = new JButton("add ...");
+		contentPane.add(btnAdd);
+		btnAdd.setBounds(0, 340, 114, 25);
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				switch (selectedAnimal){
+				
+				case "cat":
+					animal.add(new Cat("Majsa","Feline", 9));
+					break;
+				case "dog":
+					animal.add(new Dog("Kalle", "Canis", false));
+					break;
+				case "snake":
+					animal.add(new Snake("Voldemort","Anguis", false));
+					break;
+				default:
+					System.err.println("no valid!");
+				}
+				textArea.setText("");
+				showAnimals(textArea); 
+			}
+		});
 		
 		final JTree tree = new JTree();
 		scrollPane_1.setViewportView(tree);
@@ -70,7 +112,6 @@ public class Uppgift_4_del2 extends JFrame {
 				 * 
 				 */
 				private static final long serialVersionUID = 1L;
-
 				{
 					DefaultMutableTreeNode node_1;
 					node_1 = new DefaultMutableTreeNode("mammal");
@@ -92,57 +133,41 @@ public class Uppgift_4_del2 extends JFrame {
 		        Object nodeInfo = node.getUserObject();
 		        selectedAnimal=nodeInfo.toString();
 				System.out.println(nodeInfo.toString());
+				btnAdd.setText("add "+nodeInfo.toString());
+				
 				
 			}
 		});
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(95, 30, 678, 729);
-		contentPane.add(scrollPane);
 
-		final JTextArea textArea = new JTextArea();
-		textArea.setPreferredSize(new Dimension(4, 50));
-		textArea.setMinimumSize(new Dimension(4, 200));
-		textArea.setFont(new Font("Monospaced", Font.BOLD, 15));
-		scrollPane.setViewportView(textArea);
-		
-		animal.add(new Snake("Slythder","nosdunu", true));
-		animal.add(new Cat("nisse","cat", 9));
-		animal.add(new Dog("Henry", "cancus dicima", true));
-
-		showAnimals(textArea);
-		
 		
 
 		
-		JButton btnAdd = new JButton("add ...");
-		contentPane.add(btnAdd);
-		btnAdd.setBounds(0, 338, 97, 25);
-		btnAdd.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				switch (selectedAnimal){
-				
-				case "cat":
-					animal.add(new Cat("Majsa","cat", 9));
-					break;
-				case "dog":
-					animal.add(new Dog("DÖD", "cancus dicima", false));
-					break;
-				case "snake":
-					animal.add(new Snake("Pentium","nosdunu", false));
-					break;
-				default:
-					System.err.println("no valid!");
-				}
-				textArea.setText("");
-				showAnimals(textArea); 
-			}
-		});
+	
 
 
 	
 
 	}
+	
+	public static synchronized void playSound(final String url) {
+		  new Thread(new Runnable() {
+		  // The wrapper thread is unnecessary, unless it blocks on the
+		  // Clip finishing; see comments.
+		    public void run() {
+		      try {
+		        Clip clip = AudioSystem.getClip();
+		        AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+		        Uppgift_4_del2.class.getResourceAsStream("/path/to/sounds/" + url));
+		        clip.open(inputStream);
+		        clip.start(); 
+		      } catch (Exception e) {
+		        System.err.println(e.getMessage());
+		      }
+		    }
+		  }).start();
+		}
+	
 	
 	private void  showAnimals(JTextArea textArea){
 		for (Animal a : animal) {

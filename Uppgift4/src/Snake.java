@@ -23,6 +23,6 @@ public class Snake extends Animal {
 //	@Override
 	public String getInfo() {
 		return "The " + String.valueOf(this.getClass()).substring(6,String.valueOf(this.getClass()).length()) + " " + super.getfriendlyname() + " lat: "
-				+ super.getLatinName() + " " +  " is poisonus:" + isPoisonus()+ "\n";
+				+ super.getLatinName() +  " is " + ((isPoisonus())?"poisonus":"not poisonus")+ "\n";
 	}
 }

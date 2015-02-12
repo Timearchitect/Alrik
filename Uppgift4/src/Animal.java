@@ -16,7 +16,6 @@ public void setIconPic(){
 
 	public Animal(String _latinname){
 		this.latinName=_latinname;
-		
 	}
 	public abstract String getInfo();
 

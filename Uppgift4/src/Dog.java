@@ -41,6 +41,7 @@ public class Dog extends Mammal{
 	
 	//@Override
 	public String getInfo() {
-		 return "The "+String.valueOf(this.getClass()).substring(6,String.valueOf(this.getClass()).length())+" "+ super.getfriendlyname() + " lat:" + super.getLatinName() +"nurses for:"+ super.getGestationTime() +" months and is stupid: "+ this.getStupid() +"\n";
+	
+		 return "The "+String.valueOf(this.getClass()).substring(6,String.valueOf(this.getClass()).length())+" "+ super.getfriendlyname() + " lat:" + super.getLatinName() +"nurses for:"+ super.getGestationTime() +" months and is "+ ((this.getStupid())?"stupid": "not stupid") +"\n";
 	}
 }

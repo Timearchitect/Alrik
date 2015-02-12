@@ -83,11 +83,8 @@ public class Uppgift_4_del1 extends JFrame {
 		contentPane.add(errorArea);
 		infoArea.setEditable(false);
 		
-		
 		infoArea.setBounds(25, 163, 354, 80);
 		contentPane.add(infoArea);
-		
-		
 		
 		JButton btnNewButton = new JButton("Add human");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -138,7 +135,6 @@ public class Uppgift_4_del1 extends JFrame {
 			}});
 		btnNewButton_2.setBounds(289, 125, 97, 25);
 		contentPane.add(btnNewButton_2);
-		
 
 		JLabel lblNewLabel = new JLabel("Error");
 		lblNewLabel.setBounds(35, 258, 56, 16);
