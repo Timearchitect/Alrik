@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 Snart klar
 
 alright :)
@@ -16,6 +16,9 @@ Comments
 Ok ska ska fixa den och lämna in de andra snart.
 
 /AH
-=======
-Klar
->>>>>>> origin/Both_assignments
+------------
+mergad med branch:"Both assignment"
+-------------
+Båda assignment är i uppgift4 
+Klar!
+
