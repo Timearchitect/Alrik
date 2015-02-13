@@ -30,7 +30,7 @@ public class Human {
 	}
 
 	public String getErrorMsg() {
-			return this.errorMsg;
+		return this.errorMsg;
 	}
 	
 }
